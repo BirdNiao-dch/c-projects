@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="tictactoe-rewrite/tictactoe-rewrite.vcxproj" Id="ea82f098-cec2-4d36-90fe-f05d206bf657" />
+</Solution>
