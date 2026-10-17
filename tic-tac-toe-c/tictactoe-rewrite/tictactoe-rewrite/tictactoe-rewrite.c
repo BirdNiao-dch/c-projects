@@ -67,27 +67,43 @@ void playerMove(char board[3][3], char who) {
 }
 int main() {
 	char board[3][3];
-	initBoard(board);
+	char again;
+	int count1 = 0;
+	int count2 = 0;
+	int count3 = 0;
+	do {
+		int result = 0;
+		initBoard(board);
+		char current = 'X';
+		while (1) {
+			printBoard(board);
+			playerMove(board, current);
+			result = checkWin(board);
+			if (result != 0) {
+				break;
+			}
+			current = (current == 'X') ? 'O' : 'X';
 
-	char current = 'X';
-	int result = 0;
-
-	while (1) {
-		printBoard(board);
-		playerMove(board, current);
-		result = checkWin(board);
-		if (result != 0) {
-			break;
 		}
-		current = (current == 'X') ? 'O' : 'X';
-
-	}
-	printBoard(board);
-	if (result == 1)
-		printf("玩家X获胜");
-	else if (result == 2)
-		printf("玩家O获胜");
-	else
-		printf("平局");
+		
+		printBoard(board);
+		if (result == 1) {
+			printf("玩家X获胜\n");
+			count1++;
+		}
+		else if (result == 2) {
+			printf("玩家O获胜\n");
+			count2++;
+		}
+		else {
+			printf("平局\n");
+			count3++;
+		}
+		printf("再来一局？(y/n):");
+		scanf(" %c", &again);
+	} while (again == 'y' || again == 'Y');
+	printf("玩家X赢了%d局\n",count1);
+	printf("玩家O赢了%d局\n",count2);
+	printf("平局为%d局\n", count3);
 	return 0;
 }
